@@ -1,0 +1,14 @@
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a device; this may
+# be used with UUID= as a more robust way to name devices that works even if
+# disks are added and removed. See fstab(5).
+#
+# <file system>             <mount point>  <type>  <options>  <dump>  <pass>
+UUID=7ec33b97-03a6-4cd5-92f4-cdf9ecd5b0d5 /              btrfs    defaults,noatime,discard 0 1
+tmpfs                                     /tmp           tmpfs   defaults,noatime,mode=1777 0 0
+UUID=30bb1f16-f4c7-4807-bfa5-ed8b872304b5    /home    ext4    noauto,x-systemd.automount    0    0
+UUID=72FA1D5D77DFD308 /media/marcos/HD ntfs nls-utf8,umask-0222,uid-1000,gid-1000,rw,noauto 0 0
+UUID=8C16067116065C98 /media/marcos/8C16067116065C98 ntfs nls-utf8,umask-0222,uid-1000,gid-1000,noauto,rw 0 0
+/swapfile none swap defaults 0 0
+ 
