@@ -16,10 +16,10 @@ boldclear='\033[1m'
 
 #############################
 # Menu de seleção - comeco
-clear && printf ${boldorange}"\n Menu - Emulador Citra ${clear}\n"
+clear && printf ${boldorange}"\n Menu - Emulador Citra e dependencias ${clear}\n"
 sleep 01;
-#printf ${boldblue}"- Instalação${clear}\n"
-#printf "Digite ${boldorange}1${clear} - Baixar o Yuzu (não funcionando)\n\n"
+printf ${boldblue}"- Instalação${clear}\n"
+printf "Digite ${boldorange}1${clear} - Baixar o Yuzu (não funcionando)\n\n"
 # Fazer Backup
 printf ${boldblue}"- Backup${clear}\n"
 printf "Digite ${boldorange}2${clear} - Fazer um novo backup\n"
@@ -37,6 +37,7 @@ printf ${boldorange}"\nSelecione uma opção:${clear}\n"
 # Instalação de pacotes
 read -n1 -s opt
 if [ $opt = "1" ];then
+sudo apt-get install libsdl2-dev libfdk-aac-dev build-essential cmake libssl-dev
 printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
 exec ./scripts/citra.sh
 

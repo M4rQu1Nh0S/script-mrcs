@@ -18,8 +18,8 @@ boldclear='\033[1m'
 # Menu de seleção - comeco
 clear && printf ${boldorange}"\n Menu - Emulador Yuzu ${clear}\n"
 sleep 01;
-#printf ${boldblue}"- Instalação${clear}\n"
-#printf "Digite ${boldorange}1${clear} - Baixar o Yuzu (não funcionando)\n\n"
+printf ${boldblue}"- Instalação${clear}\n"
+printf "Digite ${boldorange}1${clear} - Baixar o Yuzu e dependencias \n\n"
 # Fazer Backup
 printf ${boldblue}"- Backup${clear}\n"
 printf "Digite ${boldorange}2${clear} - Fazer um novo backup\n"
@@ -37,6 +37,9 @@ printf ${boldorange}"\nSelecione uma opção:${clear}\n"
 # Instalação de pacotes
 read -n1 -s opt
 if [ $opt = "1" ];then
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt-get install autoconf cmake g++-11 gcc-11 git glslang-tools libasound2 libboost-context-dev libglu1-mesa-dev libhidapi-dev libpulse-dev libtool libudev-dev libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-xinerama0 libxcb-xkb1 libxext-dev libxkbcommon-x11-0 mesa-common-dev nasm ninja-build qtbase5-dev qtbase5-private-dev qtwebengine5-dev qtmultimedia5-dev libmbedtls-dev
+
 printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
 exec ./scripts/yuzu.sh
 

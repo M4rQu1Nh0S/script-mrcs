@@ -75,6 +75,7 @@ __used __section("__versions") = {
 	{ 0xb47cca30, "csum_ipv6_magic" },
 	{ 0x6b10bee1, "_copy_to_user" },
 	{ 0x9928309e, "PDE_DATA" },
+	{ 0x5b8239ca, "__x86_return_thunk" },
 	{ 0x26556bab, "pci_set_master" },
 	{ 0x97934ecf, "del_timer_sync" },
 	{ 0xfb578fc5, "memset" },

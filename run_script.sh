@@ -26,7 +26,7 @@ printf "Digite ${boldorange}2${clear} - Para limitar o CState da CPU até C1\n"
 # Aplicar configurações extras
 printf ${boldblue}"\n- Configurações extras${clear}\n"
 printf "Digite ${boldorange}3${clear} - Para aplicar o filtro de ruído para o microfone\n"
-printf "Digite ${boldorange}4${clear} - Para remapear o microfone traseiro como frontal\n"
+printf "Digite ${boldorange}4${clear} - Para aplicar fix microfone mutado pós reboot\n"
 printf "Digite ${boldorange}5${clear} - Para aplicar script de simbolos do teclado\n"
 printf "Digite ${boldorange}6${clear} - Para corrigir o DPI da tela (96x96)\n"
 # Baixar pacotes
@@ -107,8 +107,8 @@ exec ./run_script.sh
 # Driver nvidia
 elif [ $opt = "v" ];then
 sleep 01;
-printf ${orange}"* Baixando os pacotes nvidia 510${clear}\n"
-sudo apt install -y nvidia-driver-510 nvidia-dkms-510
+printf ${orange}"* Baixando os pacotes nvidia 470${clear}\n"
+sudo apt install nvidia-driver-470 nvidia-dkms-470
 sleep 03;
 printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
 exec ./run_script.sh
@@ -205,7 +205,7 @@ exec ./run_script.sh
 #############################
 # Remapeamento do microfone:
 elif [ $opt = "4" ];then
-printf ${orange}"** Aplicando fix de MIC mudo ao iniciar o sistema: **${clear}\n"
+printf ${orange}"** Aplicando fix para MIC mudo após reboot: **${clear}\n"
 sudo cp ./refresh_audio.sh /usr/bin/refresh_audio.sh
 sudo chmod a+x /usr/bin/refresh_audio.sh
 sleep 03;
@@ -234,7 +234,7 @@ printf ${boldorange}"** Configuração de DPI **${clear}\n"
 sleep 02;
 printf ${orange}"* Criando o arquivo '/usr/share/X11/xorg.conf.d/20-nvidia.conf'${clear}\n"
 sudo nvidia-xconfig
-sudo mv /etc/X11/xorg.conf /usr/share/X11/xorg.conf.d/20-nvidia.conf
+sudo cp /etc/X11/xorg.conf /usr/share/X11/xorg.conf.d/20-nvidia.conf
 printf ${boldorange}"* Copie o comando abaixo:${clear}\n"
 sleep 02;
 echo '    Option "UseEdidDpi" "False"'

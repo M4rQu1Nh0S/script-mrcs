@@ -39,6 +39,8 @@ read -n1 -s opt
 if [ $opt = "1" ];then
 printf ${orange}"* Baixando o 'Steam'...${clear}\n"
 sleep 01;
+sudo dpkg --add-architecture i386
+sudo apt update
 sudo apt install steam
 printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
 exec ./scripts/steam.sh
