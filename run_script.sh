@@ -28,7 +28,7 @@ printf ${boldblue}"\n- Configurações extras${clear}\n"
 printf "Digite ${boldorange}3${clear} - Para aplicar o filtro de ruído para o microfone\n"
 printf "Digite ${boldorange}4${clear} - Para aplicar fix microfone mutado pós reboot\n"
 printf "Digite ${boldorange}5${clear} - Para aplicar script de simbolos do teclado\n"
-printf "Digite ${boldorange}6${clear} - Para corrigir o DPI da tela (96x96)\n"
+printf "Digite ${boldorange}6${boldclear} - Para corrigir o DPI da tela (96x96)\n"
 # Baixar pacotes
 printf ${boldblue}"\n- Pacotes e programas${clear}\n"
 printf "Digite ${boldorange}V${clear} - Para baixar o driver Nvidia 510\n"
@@ -41,6 +41,7 @@ printf "Digite ${boldorange}D${clear} - Para baixar o Discord\n"
 printf "Digite ${boldorange}R${clear} - Para baixar o Rambox\n"
 printf "Digite ${boldorange}H${clear} - Para baixar o Hamsket\n"
 printf "Digite ${boldorange}Y${clear} - Para baixar o Yuzu\n"
+printf "Digite ${boldorange}K${clear} - Para baixar o kCharSelect (KDE)\n"
 printf "Digite ${boldorange}C${clear} - Para baixar o Citra\n"
 printf "Digite ${boldorange}S${clear} - Para baixar o Steam\n"
 printf "Digite ${boldorange}7${clear} - Para baixar o Fightcade\n"
@@ -111,6 +112,14 @@ printf ${orange}"* Baixando os pacotes nvidia 470${clear}\n"
 sudo apt install nvidia-driver-470 nvidia-dkms-470
 sleep 03;
 printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
+exec ./run_script.sh
+
+#############################
+# kCharselect:
+elif [ $opt = "k" ];then
+printf ${orange}"* Baixando o kCharSelect${clear}\n"
+sudo apt install kcharselect
+sleep 03;
 exec ./run_script.sh
 
 #############################

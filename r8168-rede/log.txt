@@ -905,3 +905,36 @@ make[2]: Entering directory '/usr/src/linux-headers-5.15.0-46-generic'
   DEPMOD  /lib/modules/5.15.0-46-generic
 make[2]: Leaving directory '/usr/src/linux-headers-5.15.0-46-generic'
 make[1]: Leaving directory '/media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/src'
+-------------------------------
+qui 22 set 2022 19:10:44 -03
+make -C src/ clean
+make[1]: Entrando no diretório '/media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/src'
+make -C /lib/modules/5.15.0-48-generic/build M=/media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/src clean
+make[2]: Entrando no diretório '/usr/src/linux-headers-5.15.0-48-generic'
+  CLEAN   /media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/src/Module.symvers
+make[2]: Saindo do diretório '/usr/src/linux-headers-5.15.0-48-generic'
+make[1]: Saindo do diretório '/media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/src'
+make -C src/ modules
+make[1]: Entrando no diretório '/media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/src'
+make -C /lib/modules/5.15.0-48-generic/build M=/media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/src modules
+make[2]: Entrando no diretório '/usr/src/linux-headers-5.15.0-48-generic'
+  CC [M]  /media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/src/r8168_n.o
+  CC [M]  /media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/src/r8168_asf.o
+  CC [M]  /media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/src/rtl_eeprom.o
+  CC [M]  /media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/src/rtltool.o
+  LD [M]  /media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/src/r8168.o
+  MODPOST /media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/src/Module.symvers
+  CC [M]  /media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/src/r8168.mod.o
+  LD [M]  /media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/src/r8168.ko
+  BTF [M] /media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/src/r8168.ko
+make[2]: Saindo do diretório '/usr/src/linux-headers-5.15.0-48-generic'
+make[1]: Saindo do diretório '/media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/src'
+make -C src/ install
+make[1]: Entrando no diretório '/media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/src'
+make -C /lib/modules/5.15.0-48-generic/build M=/media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/src INSTALL_MOD_DIR=kernel/drivers/net/ethernet/realtek modules_install
+make[2]: Entrando no diretório '/usr/src/linux-headers-5.15.0-48-generic'
+  INSTALL /lib/modules/5.15.0-48-generic/kernel/drivers/net/ethernet/realtek/r8168.ko
+  SIGN    /lib/modules/5.15.0-48-generic/kernel/drivers/net/ethernet/realtek/r8168.ko
+  DEPMOD  /lib/modules/5.15.0-48-generic
+make[2]: Saindo do diretório '/usr/src/linux-headers-5.15.0-48-generic'
+make[1]: Saindo do diretório '/media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/src'

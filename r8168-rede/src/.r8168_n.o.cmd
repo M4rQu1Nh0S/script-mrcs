@@ -245,6 +245,7 @@ deps_/media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/src/r8168
   include/linux/timex.h \
   include/uapi/linux/timex.h \
   arch/x86/include/asm/timex.h \
+    $(wildcard include/config/X86_TSC) \
   arch/x86/include/asm/processor.h \
     $(wildcard include/config/X86_VMX_FEATURE_NAMES) \
     $(wildcard include/config/X86_IOPL_IOPERM) \
@@ -399,7 +400,6 @@ deps_/media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/src/r8168
   include/uapi/linux/personality.h \
   include/linux/err.h \
   arch/x86/include/asm/tsc.h \
-    $(wildcard include/config/X86_TSC) \
   arch/x86/include/asm/cpufeature.h \
     $(wildcard include/config/X86_FEATURE_NAMES) \
   include/vdso/time32.h \
@@ -1091,6 +1091,7 @@ deps_/media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/src/r8168
   include/uapi/linux/ioprio.h \
   include/linux/fs_types.h \
   include/linux/mount.h \
+  include/linux/mnt_idmapping.h \
   include/uapi/linux/fs.h \
   include/linux/quota.h \
     $(wildcard include/config/QUOTA_NETLINK_INTERFACE) \

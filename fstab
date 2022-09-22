@@ -5,10 +5,9 @@
 # disks are added and removed. See fstab(5).
 #
 # <file system>             <mount point>  <type>  <options>  <dump>  <pass>
-UUID=7ec33b97-03a6-4cd5-92f4-cdf9ecd5b0d5 /              btrfs    defaults,noatime,discard 0 1
+UUID=6bb86066-5a14-42b2-b2cb-c5d2ae4303d0 /              ext4    defaults,noatime 0 1
 tmpfs                                     /tmp           tmpfs   defaults,noatime,mode=1777 0 0
-UUID=30bb1f16-f4c7-4807-bfa5-ed8b872304b5    /home    ext4    noauto,x-systemd.automount    0    0
-UUID=72FA1D5D77DFD308 /media/marcos/HD ntfs nls-utf8,umask-0222,uid-1000,gid-1000,rw,noauto 0 0
-UUID=8C16067116065C98 /media/marcos/8C16067116065C98 ntfs nls-utf8,umask-0222,uid-1000,gid-1000,noauto,rw 0 0
-/swapfile none swap defaults 0 0
- 
+UUID=30bb1f16-f4c7-4807-bfa5-ed8b872304b5    /home    ext4    nodev,nosuid    0    1
+UUID=72FA1D5D77DFD308 /media/marcos/HD ntfs nls-utf8,umask-0222,uid-1000,gid-1000,rw 0 0
+UUID=cd113bd8-607c-450c-9d3e-08cc1079e3a9 /media/marcos/SSD240GB ext4 defaults,noatime 0 1
+/swapfile swap swap defaults 0 0
