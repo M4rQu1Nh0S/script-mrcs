@@ -1,0 +1,1 @@
+cmd_/media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/OpenSUSE/r8168-8.050.03/src/r8168.o := ld -m elf_x86_64 -z noexecstack --no-warn-rwx-segments   -r -o /media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/OpenSUSE/r8168-8.050.03/src/r8168.o @/media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/OpenSUSE/r8168-8.050.03/src/r8168.mod 

@@ -31,10 +31,10 @@ printf "Digite ${boldorange}5${clear} - Para aplicar script de simbolos do tecla
 printf "Digite ${boldorange}6${boldclear} - Para corrigir o DPI da tela (96x96)\n"
 # Baixar pacotes
 printf ${boldblue}"\n- Pacotes e programas${clear}\n"
-printf "Digite ${boldorange}V${clear} - Para baixar o driver Nvidia 510\n"
+printf "Digite ${boldorange}V${clear} - Para baixar o driver Nvidia 470\n"
 printf "Digite ${boldorange}N${clear} - Para baixar o NALA (APT BackEnd)\n"
 printf "Digite ${boldorange}L${clear} - Para baixar o Lutris nativo\n"
-printf "Digite ${boldorange}J${clear} - Para baixar o pacote alsa-tools-gui nativo\n"
+#printf "Digite ${boldorange}J${clear} - Para baixar o pacote alsa-tools-gui nativo\n"
 printf "Digite ${boldorange}A${clear} - Para baixar o Audacity\n"
 printf "Digite ${boldorange}F${clear} - Para baixar o Firefox\n"
 printf "Digite ${boldorange}D${clear} - Para baixar o Discord\n"
@@ -46,9 +46,8 @@ printf "Digite ${boldorange}C${clear} - Para baixar o Citra\n"
 printf "Digite ${boldorange}S${clear} - Para baixar o Steam\n"
 printf "Digite ${boldorange}7${clear} - Para baixar o Fightcade\n"
 printf "Digite ${boldorange}8${clear} - Para baixar o Krita\n"
+printf "Digite ${boldorange}G${clear} - Para baixar o GIMP\n"
 
-#printf "Apagar isso para criar uma nova opção de menu${clear}\n"
-#printf "Apagar isso para criar uma nova opção de menu${clear}\n"
 printf "Digite ${boldorange}M${clear} - Para ler as instruções e recomendações extras${clear}\n"
 printf ${orange}"*Digite ${boldred}"Q"${orange} para sair do script*${clear}\n"
 sleep 01;
@@ -130,12 +129,13 @@ exec ./scripts/lutris.sh
 
 #############################
 # Alsa tools:
-elif [ $opt = "j" ];then
-printf ${orange}"* Baixando o pacote alsa-tools-gui${clear}\n"
-sudo apt install -y alsa-tools-gui
-sleep 03;
-printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
-exec ./run_script.sh
+## INATIVADO
+#elif [ $opt = "j" ];then
+#printf ${orange}"* Baixando o pacote alsa-tools-gui${clear}\n"
+#sudo apt install -y alsa-tools-gui
+#sleep 03;
+#printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
+#exec ./run_script.sh
 
 #############################
 # Audacity:
@@ -187,10 +187,19 @@ elif [ $opt = "7" ];then
 exec ./scripts/fightcade.sh
 
 #############################
-# Audacity:
+# Krita:
 elif [ $opt = "8" ];then
 printf ${orange}"* Baixando o pacote Krita${clear}\n"
 sudo apt install -y krita
+sleep 03;
+printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
+exec ./run_script.sh
+
+#############################
+# GIMP:
+elif [ $opt = "g" ];then
+printf ${orange}"* Baixando o pacote gimp${clear}\n"
+sudo apt install -y gimp language-pack-gnome-pt language-pack-gnome-pt-base
 sleep 03;
 printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
 exec ./run_script.sh
@@ -215,6 +224,7 @@ exec ./run_script.sh
 # Remapeamento do microfone:
 elif [ $opt = "4" ];then
 printf ${orange}"** Aplicando fix para MIC mudo após reboot: **${clear}\n"
+printf ${boldgreen}"* Criando o script em '/usr/bin/refresh_audio.sh' *${clear}\n"
 sudo cp ./refresh_audio.sh /usr/bin/refresh_audio.sh
 sudo chmod a+x /usr/bin/refresh_audio.sh
 sleep 03;

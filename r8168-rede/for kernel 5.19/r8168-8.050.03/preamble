@@ -1,0 +1,2 @@
+Requires:	kernel-%1
+Requires:	r8168-blacklist-r8169

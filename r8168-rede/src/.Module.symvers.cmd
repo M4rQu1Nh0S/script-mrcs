@@ -1,1 +1,0 @@
-cmd_/media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/src/Module.symvers := sed 's/\.ko$$/\.o/' /media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/src/modules.order | scripts/mod/modpost -m -a  -o /media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/src/Module.symvers -e -i Module.symvers   -T -
