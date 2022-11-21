@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=/bin/refresh_audio.sh
+Icon=
+Name=refresh_audio.sh
+Path=
+Terminal=False
+Type=Application
