@@ -22,7 +22,7 @@ printf ${boldblue}"- Repositórios${clear}\n"
 printf "Digite ${boldorange}0${clear} - ${boldclear}Para instalar e atualizar o APT,DEB-GET e desinstalar SNAPs ${boldred}(Obrigatório):${clear}\n"
 printf ${boldblue}"\n- Configurações essenciais${clear}\n"
 printf "Digite ${boldorange}1${clear} - Para corrigir problema de relógio com o Windows\n"
-printf "Digite ${boldorange}2${clear} - Para limitar o CState da CPU até C1\n"
+printf "Digite ${boldorange}2${clear} - Para limitar o CState da CPU até C1E\n"
 # Aplicar configurações extras
 printf ${boldblue}"\n- Configurações extras${clear}\n"
 printf "Digite ${boldorange}3${clear} - Para aplicar o filtro de ruído para o microfone\n"
@@ -93,7 +93,7 @@ printf ${orange}"* Aplicando configurações do CState...${clear}\n"
 sleep 02;
 printf ${orange}"* Abrindo /etc/default/grub${clear}\n"
 sleep 02;
-printf ${boldorange}"* Copie 'intel_idle.max_cstate=1' e cole na parte 'GRUB_CMDLINE_LINUX_DEFAULT='${clear}\n"
+printf ${boldorange}"* Copie 'intel_idle.max_cstate=2' e cole na parte 'GRUB_CMDLINE_LINUX_DEFAULT='${clear}\n"
 printf ${green}"*** Aperte ${red}'ENTER'${green} para abrir o NANO.${clear}\n" && read
 sudo nano /etc/default/grub
 printf ${orange}"** Executando o comando 'sudo update-grub' **${clear}\n"
@@ -204,21 +204,9 @@ sleep 03;
 printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
 exec ./run_script.sh
 
-#############################
-## Configs extras
 # Ruído microfone:
 elif [ $opt = "3" ];then
-printf ${orange}"** Aplicando o filtro de ruído para o microfone: **${clear}\n"
-printf ${orange}"Fazendo backup do arquivo 'default.pa' para 'default.pa.bak'${clear}\n"
-sudo cp /etc/pulse/default.pa /etc/pulse/default.pa.bak
-sleep 03;
-printf ${orange}"Copiando 'filtro-microfone.pa' para o destino /etc/pulse/default.pa${clear}\n"
-sudo cp ./filtro-microfone.pa /etc/pulse/default.pa
-echo "Reiniciando o pulse audio" && sleep 01;
-pulseaudio -k
-sleep 03;
-printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
-exec ./run_script.sh
+exec ./scripts/noise_mic.sh
 
 #############################
 # Remapeamento do microfone:
@@ -227,11 +215,10 @@ printf ${orange}"** Aplicando fix para MIC mudo após reboot: **${clear}\n"
 printf ${boldgreen}"* Criando o script em '/usr/bin/refresh_audio.sh' *${clear}\n"
 sudo cp ./refresh_audio.sh /usr/bin/refresh_audio.sh
 sudo chmod a+x /usr/bin/refresh_audio.sh
-cp ./refresh_audio.sh.desktop ~/.config/autostart
 sleep 03;
 echo "Reiniciando o pulse audio" && sleep 01;
 pulseaudio -k
-printf ${boldblue}" Pronto, ao reiniciar a sessão o script funcionará automaticamente. ${clear}\n"
+printf ${boldblue}" É necessário aplicar um autostart para esse script manualmente ${clear}\n"
 sleep 03;
 printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
 exec ./run_script.sh
@@ -243,8 +230,7 @@ printf ${orange}"** Aplicando script de atalhos de simbolos **${clear}\n"
 printf ${boldgreen}"* Criando o script em '/usr/bin/remap57.sh' *${clear}\n"
 sudo cp ./remap57.sh /usr/bin
 sudo chmod a+x /usr/bin/remap57.sh
-cp ./remap57.sh.desktop ~/.config/autostart
-printf ${boldblue}" Pronto, ao reiniciar a sessão o script funcionará automaticamente. ${clear}\n"
+printf ${boldblue}" É necessário aplicar o autostart para esse script manualmente ${clear}\n"
 printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
 exec ./run_script.sh
 
