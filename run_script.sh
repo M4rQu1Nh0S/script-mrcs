@@ -215,10 +215,11 @@ printf ${orange}"** Aplicando fix para MIC mudo após reboot: **${clear}\n"
 printf ${boldgreen}"* Criando o script em '/usr/bin/refresh_audio.sh' *${clear}\n"
 sudo cp ./refresh_audio.sh /usr/bin/refresh_audio.sh
 sudo chmod a+x /usr/bin/refresh_audio.sh
+cp ./refresh_audio.sh.desktop ~/.config/autostart
 sleep 03;
 echo "Reiniciando o pulse audio" && sleep 01;
 pulseaudio -k
-printf ${boldblue}" É necessário aplicar um autostart para esse script manualmente ${clear}\n"
+#printf ${boldblue}" É necessário aplicar um autostart para esse script manualmente ${clear}\n"
 sleep 03;
 printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
 exec ./run_script.sh
@@ -230,7 +231,8 @@ printf ${orange}"** Aplicando script de atalhos de simbolos **${clear}\n"
 printf ${boldgreen}"* Criando o script em '/usr/bin/remap57.sh' *${clear}\n"
 sudo cp ./remap57.sh /usr/bin
 sudo chmod a+x /usr/bin/remap57.sh
-printf ${boldblue}" É necessário aplicar o autostart para esse script manualmente ${clear}\n"
+cp ./remap57.sh.desktop ~/.config/autostart
+#printf ${boldblue}" É necessário aplicar o autostart para esse script manualmente ${clear}\n"
 printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
 exec ./run_script.sh
 
