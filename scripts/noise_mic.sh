@@ -43,8 +43,9 @@ sudo cp ./filtro-microfone.pa /etc/pulse/default.pa
 echo "Reiniciando o pulse audio" && sleep 01;
 pulseaudio -k
 sleep 03;
+echo "Use o comando 'alsamixer' e ative as opções 'Dynamic, Indepentent, Loopback'" && sleep 02;
 printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
-exec ./noise_mic.sh
+exec ./scripts/noise_mic.sh
 
 # Backup de dados:
 elif [ $opt = "2" ];then
@@ -54,12 +55,13 @@ printf ${orange}"Fazendo backup do arquivo 'pipewire-pulse.conf' para 'pipewire-
 sudo cp /usr/share/pipewire/pipewire-pulse.conf /usr/share/pipewire/pipewire-pulse.conf.bak
 sleep 03;
 printf ${orange}"Copiando 'filtro-microfone.pa' para o destino /etc/pulse/default.pa${clear}\n"
-sudo cp ../pipewire-pulse.conf /usr/share/pipewire/pipewire-pulse.conf
+sudo cp ./pipewire-pulse.conf /usr/share/pipewire/pipewire-pulse.conf
 echo "Reiniciando o PipeWire" && sleep 01;
 systemctl --user restart pipewire pipewire-pulse
 sleep 03;
+echo "Use o comando 'alsamixer' e ative as opções 'Dynamic, Indepentent, Loopback'" && sleep 02;
 printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
-exec ./noise_mic.sh
+exec ./scripts/noise_mic.sh
 
 # Retorno ou sair do script
 elif [ $opt = "v" ];then

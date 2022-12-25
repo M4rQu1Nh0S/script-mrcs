@@ -164,3 +164,61 @@ make[2]: Entrando no diretório '/usr/src/linux-headers-5.19.0-19-generic'
   DEPMOD  /lib/modules/5.19.0-19-generic
 make[2]: Saindo do diretório '/usr/src/linux-headers-5.19.0-19-generic'
 make[1]: Saindo do diretório '/media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/OpenSUSE/r8168-8.050.03/src'
+-------------------------------
+sex 28 out 2022 15:24:20 -03
+make -C src/ clean
+make[1]: Entrando no diretório '/mnt/sdc3/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/for kernel 5.19/r8168-8.050.03/src'
+
+make -C /lib/modules/6.0.2-2-MANJARO/build M=/mnt/sdc3/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/for kernel 5.19/r8168-8.050.03/src clean
+make[2]: Entrando no diretório '/usr/lib/modules/6.0.2-2-MANJARO/build'
+
+make[3]: Nada a ser feito para 'kernel'. 
+make[2]: Saindo do diretório '/usr/lib/modules/6.0.2-2-MANJARO/build'
+
+make[1]: Saindo do diretório '/mnt/sdc3/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/for kernel 5.19/r8168-8.050.03/src'
+
+-------------------------------
+ter 08 nov 2022 14:06:04 -03
+make -C src/ clean
+make[1]: Entrando no diretório '/run/media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/for kernel 5.19/r8168-8.050.03/src'
+
+make -C /lib/modules/5.19.17_1/build M=/run/media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/for kernel 5.19/r8168-8.050.03/src clean
+make[2]: Entrando no diretório '/usr/src/kernel-headers-5.19.17_1'
+
+make[3]: Nada a ser feito para 'kernel'. 
+make[2]: Saindo do diretório '/usr/src/kernel-headers-5.19.17_1'
+
+make[1]: Saindo do diretório '/run/media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/for kernel 5.19/r8168-8.050.03/src'
+
+-------------------------------
+sex 18 nov 2022 14:18:47 -03
+make -C src/ clean
+make[1]: Entrando no diretório '/run/media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/for kernel 5.19/r8168-8.050.03/src'
+
+make -C /lib/modules/6.0.7-artix1-1/build M=/run/media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/for kernel 5.19/r8168-8.050.03/src clean
+make[2]: Entrando no diretório '/run/media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/for kernel 5.19/r8168-8.050.03/src'
+
+make[2]: Saindo do diretório '/run/media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/for kernel 5.19/r8168-8.050.03/src'
+
+make[1]: Saindo do diretório '/run/media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/for kernel 5.19/r8168-8.050.03/src'
+
+-------------------------------
+dom 20 nov 2022 17:26:26 -03
+-------------------------------
+seg 19 dez 2022 10:58:06 -03
+make -C src/ clean
+make[1]: Entering directory '/media/marcos/HD/Z_Coisas/Arquivos/Linux/script-mrcs/r8168-rede/for kernel 5.19/r8168-8.050.03/src'
+make -C /lib/modules/5.15.0-56-generic/build M=/media/marcos/HD/Z_Coisas/Arquivos/Linux/script-mrcs/r8168-rede/for kernel 5.19/r8168-8.050.03/src clean
+make[2]: Entering directory '/usr/src/linux-headers-5.15.0-56-generic'
+make[3]: Nothing to be done for 'kernel'.
+make[2]: Leaving directory '/usr/src/linux-headers-5.15.0-56-generic'
+make[1]: Leaving directory '/media/marcos/HD/Z_Coisas/Arquivos/Linux/script-mrcs/r8168-rede/for kernel 5.19/r8168-8.050.03/src'
+-------------------------------
+seg 19 dez 2022 10:58:16 -03
+make -C src/ clean
+make[1]: Entering directory '/media/marcos/HD/Z_Coisas/Arquivos/Linux/script-mrcs/r8168-rede/for kernel 5.19/r8168-8.050.03/src'
+make -C /lib/modules/5.15.0-56-generic/build M=/media/marcos/HD/Z_Coisas/Arquivos/Linux/script-mrcs/r8168-rede/for kernel 5.19/r8168-8.050.03/src clean
+make[2]: Entering directory '/usr/src/linux-headers-5.15.0-56-generic'
+make[3]: Nothing to be done for 'kernel'.
+make[2]: Leaving directory '/usr/src/linux-headers-5.15.0-56-generic'
+make[1]: Leaving directory '/media/marcos/HD/Z_Coisas/Arquivos/Linux/script-mrcs/r8168-rede/for kernel 5.19/r8168-8.050.03/src'

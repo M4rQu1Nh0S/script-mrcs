@@ -215,10 +215,10 @@ printf ${orange}"** Aplicando fix para MIC mudo após reboot: **${clear}\n"
 printf ${boldgreen}"* Criando o script em '/usr/bin/refresh_audio.sh' *${clear}\n"
 sudo cp ./refresh_audio.sh /usr/bin/refresh_audio.sh
 sudo chmod a+x /usr/bin/refresh_audio.sh
-cp ./refresh_audio.sh.desktop ~/.config/autostart
+mkdir -p ~/.config/autostart/
+cp -r ./refresh_audio.sh.desktop ~/.config/autostart
 sleep 03;
-echo "Reiniciando o pulse audio" && sleep 01;
-pulseaudio -k
+echo "Use o comando 'alsamixer' e ative as opções 'Dynamic, Indepentent, Loopback'" && sleep 01;
 #printf ${boldblue}" É necessário aplicar um autostart para esse script manualmente ${clear}\n"
 sleep 03;
 printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
@@ -231,7 +231,8 @@ printf ${orange}"** Aplicando script de atalhos de simbolos **${clear}\n"
 printf ${boldgreen}"* Criando o script em '/usr/bin/remap57.sh' *${clear}\n"
 sudo cp ./remap57.sh /usr/bin
 sudo chmod a+x /usr/bin/remap57.sh
-cp ./remap57.sh.desktop ~/.config/autostart
+mkdir -p ~/.config/autostart/
+cp -r ./remap57.sh.desktop ~/.config/autostart
 #printf ${boldblue}" É necessário aplicar o autostart para esse script manualmente ${clear}\n"
 printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
 exec ./run_script.sh
@@ -254,7 +255,8 @@ printf ${green}"*** Aperte ${red}'ENTER'${green} para abrir o NANO.${clear}\n" &
 sudo nano /usr/share/X11/xorg.conf.d/20-nvidia.conf
 sleep 02;
 printf ${boldblue}" As mudanças entraram em vigor após reiniciar o PC${clear}\n"
-sleep 02;
+echo 'Após reiniciar, use o comando: "xdpyinfo | grep -B 2 resolution"'
+sleep 03;
 printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
 exec ./run_script.sh
 
