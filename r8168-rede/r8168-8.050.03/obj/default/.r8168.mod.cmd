@@ -1,0 +1,1 @@
+cmd_/home/abuild/rpmbuild/BUILD/r8168-8.050.03/obj/default/r8168.mod := printf '%s\n'   r8168_n.o r8168_asf.o rtl_eeprom.o rtltool.o | awk '!x[$$0]++ { print("/home/abuild/rpmbuild/BUILD/r8168-8.050.03/obj/default/"$$0) }' > /home/abuild/rpmbuild/BUILD/r8168-8.050.03/obj/default/r8168.mod

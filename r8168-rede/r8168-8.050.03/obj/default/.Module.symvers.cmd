@@ -1,0 +1,1 @@
+cmd_/home/abuild/rpmbuild/BUILD/r8168-8.050.03/obj/default/Module.symvers := sed 's/ko$$/o/' /home/abuild/rpmbuild/BUILD/r8168-8.050.03/obj/default/modules.order | scripts/mod/modpost -m -a  -o /home/abuild/rpmbuild/BUILD/r8168-8.050.03/obj/default/Module.symvers -e -i Module.symvers    -T -

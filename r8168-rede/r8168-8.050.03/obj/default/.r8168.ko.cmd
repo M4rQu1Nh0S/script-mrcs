@@ -1,0 +1,1 @@
+cmd_/home/abuild/rpmbuild/BUILD/r8168-8.050.03/obj/default/r8168.ko := ld -r -m elf_x86_64 -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T scripts/module.lds -o /home/abuild/rpmbuild/BUILD/r8168-8.050.03/obj/default/r8168.ko /home/abuild/rpmbuild/BUILD/r8168-8.050.03/obj/default/r8168.o /home/abuild/rpmbuild/BUILD/r8168-8.050.03/obj/default/r8168.mod.o;  true

@@ -1,1 +1,0 @@
-cmd_/media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/OpenSUSE/r8168-8.050.03/src/modules.order := {   echo /media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/OpenSUSE/r8168-8.050.03/src/r8168.ko; :; } | awk '!x[$$0]++' - > /media/marcos/HD/Z_Coisas/Arquivos/Linux-script-marcos/r8168-rede/OpenSUSE/r8168-8.050.03/src/modules.order
