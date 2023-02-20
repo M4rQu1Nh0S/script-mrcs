@@ -19,34 +19,26 @@ clear && printf ${boldorange}"\n-----Menu:-----${clear}\n"
 sleep 01;
 # Aplicar configurações essenciais
 printf ${boldblue}"- Repositórios${clear}\n"
-printf "Digite ${boldorange}0${clear} - ${boldclear}Para instalar e atualizar o APT,DEB-GET e desinstalar SNAPs ${boldred}(Obrigatório):${clear}\n"
+printf "Digite ${boldorange}0${clear} - ${boldclear}Para instalar o DEB-GET${clear}\n"
+printf "Digite ${boldorange}9${clear} - ${boldclear}Para Desinstalar SNAPs${clear}\n"
 printf ${boldblue}"\n- Configurações essenciais${clear}\n"
 printf "Digite ${boldorange}1${clear} - Para corrigir problema de relógio com o Windows\n"
-printf "Digite ${boldorange}2${clear} - Para limitar o CState da CPU até C1E\n"
+printf "Digite ${boldorange}2${clear} - Para limitar o CState da CPU até C2E\n"
 # Aplicar configurações extras
-printf ${boldblue}"\n- Configurações extras${clear}\n"
+printf ${boldblue}"\n- Aplicar correções e configurações${clear}\n"
 printf "Digite ${boldorange}3${clear} - Para aplicar o filtro de ruído para o microfone\n"
 printf "Digite ${boldorange}4${clear} - Para aplicar fix microfone mutado pós reboot\n"
 printf "Digite ${boldorange}5${clear} - Para aplicar script de simbolos do teclado\n"
-printf "Digite ${boldorange}6${boldclear} - Para corrigir o DPI da tela (96x96)\n"
+printf "Digite ${boldorange}6${clear} - ${boldclear}Para instalar o driver r8168 para placa 'Realtek 8136'${clear}\n"
 # Baixar pacotes
 printf ${boldblue}"\n- Pacotes e programas${clear}\n"
-printf "Digite ${boldorange}V${clear} - Para baixar o driver Nvidia 470\n"
-printf "Digite ${boldorange}N${clear} - Para baixar o NALA (APT BackEnd)\n"
-printf "Digite ${boldorange}L${clear} - Para baixar o Lutris nativo\n"
 #printf "Digite ${boldorange}J${clear} - Para baixar o pacote alsa-tools-gui nativo\n"
-printf "Digite ${boldorange}A${clear} - Para baixar o Audacity\n"
-printf "Digite ${boldorange}F${clear} - Para baixar o Firefox\n"
+printf "Digite ${boldorange}F${clear} - Para instalar o Firefox em .DEB\n"
 printf "Digite ${boldorange}D${clear} - Para baixar o Discord\n"
-printf "Digite ${boldorange}R${clear} - Para baixar o Rambox\n"
 printf "Digite ${boldorange}H${clear} - Para baixar o Hamsket\n"
-printf "Digite ${boldorange}Y${clear} - Para baixar o Yuzu\n"
-printf "Digite ${boldorange}K${clear} - Para baixar o kCharSelect (KDE)\n"
-printf "Digite ${boldorange}C${clear} - Para baixar o Citra\n"
 printf "Digite ${boldorange}S${clear} - Para baixar o Steam\n"
 printf "Digite ${boldorange}7${clear} - Para baixar o Fightcade\n"
-printf "Digite ${boldorange}8${clear} - Para baixar o Krita\n"
-printf "Digite ${boldorange}G${clear} - Para baixar o GIMP\n"
+printf "Digite ${boldorange}G${clear} - Para baixar o GIMP em portugues\n"
 
 printf "Digite ${boldorange}M${clear} - Para ler as instruções e recomendações extras${clear}\n"
 printf ${orange}"*Digite ${boldred}"Q"${orange} para sair do script*${clear}\n"
@@ -58,18 +50,29 @@ printf ${boldorange}"\nSelecione uma opção:${clear}\n"
 #Atualização de repositórios
 read -n1 -s opt
 if [ $opt = "0" ];then
-printf ${boldblue}"\n- Atualizando o repositório APT${clear}\n"
-sudo apt update
 printf ${boldblue}"\n- Instalando o DEB-GET *\n${clear}\n"
 sudo apt install curl
 curl -sL https://raw.githubusercontent.com/wimpysworld/deb-get/main/deb-get | sudo -E bash -s install deb-get
 sleep 01;
-echo "Instalando 'deb-get-extras'..."
-sudo apt install -y curl
-curl -sL https://raw.githubusercontent.com/M4rQu1Nh0S/deb-get-extras/main/install.sh | sudo -E bash -s install.sh
-sleep 01;
-printf ${boldorange}"\n- Desinstalando os snaps *\n${clear}\n"
-sudo apt purge -y snapd && rm -rf ~/snap
+printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
+exec ./run_script.sh
+
+#############################
+# Remover Snaps:
+elif [ $opt = "9" ];then
+printf ${boldorange}"\n- Desinstalando os Snaps *\n${clear}\n"
+sudo snap remove --purge firefox
+sudo snap remove --purge snap-store
+sudo snap remove --purge gnome-3-38-2004
+sudo snap remove --purge gtk-common-themes
+sudo snap remove --purge snapd-desktop-integration
+sudo snap remove --purge bare
+sudo snap remove --purge core20
+sudo snap remove --purge snapd
+sudo apt remove -y --autoremove snapd
+
+sudo bash -c "printf 'Package: snapd\nPin: release a=*\nPin-Priority: -10\n' > /etc/apt/preferences.d/nosnap.pref"
+
 sleep 02;
 printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
 exec ./run_script.sh
@@ -104,30 +107,6 @@ printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu
 exec ./run_script.sh
 
 #############################
-# Driver nvidia
-elif [ $opt = "v" ];then
-sleep 01;
-printf ${orange}"* Baixando os pacotes nvidia 470${clear}\n"
-sudo apt install nvidia-driver-470 nvidia-dkms-470
-sleep 03;
-printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
-exec ./run_script.sh
-
-#############################
-# kCharselect:
-elif [ $opt = "k" ];then
-printf ${orange}"* Baixando o kCharSelect${clear}\n"
-sudo apt install kcharselect
-sleep 03;
-exec ./run_script.sh
-
-#############################
-# Lutris:
-elif [ $opt = "l" ];then
-printf ${orange}"* Baixando o pacote lutris${clear}\n"
-exec ./scripts/lutris.sh
-
-#############################
 # Alsa tools:
 ## INATIVADO
 #elif [ $opt = "j" ];then
@@ -136,15 +115,6 @@ exec ./scripts/lutris.sh
 #sleep 03;
 #printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
 #exec ./run_script.sh
-
-#############################
-# Audacity:
-elif [ $opt = "a" ];then
-printf ${orange}"* Baixando o pacote audacity${clear}\n"
-sudo apt install -y audacity
-sleep 03;
-printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
-exec ./run_script.sh
 
 #############################
 # Firefox:
@@ -162,21 +132,6 @@ elif [ $opt = "r" ];then
 exec ./scripts/rambox-debget.sh
 
 #############################
-# Hamsket:
-elif [ $opt = "h" ];then
-exec ./scripts/hamsket-debget.sh
-
-#############################
-# Yuzu:
-elif [ $opt = "y" ];then
-exec ./scripts/yuzu.sh
-
-#############################
-# Citra:
-elif [ $opt = "c" ];then
-exec ./scripts/citra.sh
-
-#############################
 # Steam:
 elif [ $opt = "s" ];then
 exec ./scripts/steam.sh
@@ -186,16 +141,6 @@ exec ./scripts/steam.sh
 elif [ $opt = "7" ];then
 exec ./scripts/fightcade.sh
 
-#############################
-# Krita:
-elif [ $opt = "8" ];then
-printf ${orange}"* Baixando o pacote Krita${clear}\n"
-sudo apt install -y krita
-sleep 03;
-printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
-exec ./run_script.sh
-
-#############################
 # GIMP:
 elif [ $opt = "g" ];then
 printf ${orange}"* Baixando o pacote gimp${clear}\n"
@@ -228,49 +173,19 @@ exec ./run_script.sh
 # Atalho de simbolos do teclado
 elif [ $opt = "5" ];then
 printf ${orange}"** Aplicando script de atalhos de simbolos **${clear}\n"
-printf ${boldgreen}"* Criando o script em '/usr/bin/remap57.sh' *${clear}\n"
-sudo cp ./remap57.sh /usr/bin
-sudo chmod a+x /usr/bin/remap57.sh
-mkdir -p ~/.config/autostart/
-cp -r ./remap57.sh.desktop ~/.config/autostart
+printf ${boldgreen}"* Aplicando patch em '/usr/share/X11/xkb/symbols/br' *${clear}\n"
+sudo cp /usr/share/X11/xkb/symbols/br /usr/share/X11/xkb/symbols/br.bkp
+sudo patch -p1 /usr/share/X11/xkb/symbols/br < ./remap.patch
 #printf ${boldblue}" É necessário aplicar o autostart para esse script manualmente ${clear}\n"
 printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
 exec ./run_script.sh
 
-#############################
-# Correção de DPI
+# Ruído microfone:
 elif [ $opt = "6" ];then
-printf ${boldorange}"** Configuração de DPI **${clear}\n"
-sleep 02;
-printf ${orange}"* Criando o arquivo '/usr/share/X11/xorg.conf.d/20-nvidia.conf'${clear}\n"
-sudo nvidia-xconfig
-sudo cp /etc/X11/xorg.conf /usr/share/X11/xorg.conf.d/20-nvidia.conf
-printf ${boldorange}"* Copie o comando abaixo:${clear}\n"
-sleep 02;
-echo '    Option "UseEdidDpi" "False"'
-echo '    Option "DPI" "96 x 96"'
-printf ${boldorange}"* Cole o comando acima dentro da parte ${red}'Section "Device"'${clear}\n"
-sleep 01;
-printf ${green}"*** Aperte ${red}'ENTER'${green} para abrir o NANO.${clear}\n" && read
-sudo nano /usr/share/X11/xorg.conf.d/20-nvidia.conf
-sleep 02;
-printf ${boldblue}" As mudanças entraram em vigor após reiniciar o PC${clear}\n"
-echo 'Após reiniciar, use o comando: "xdpyinfo | grep -B 2 resolution"'
-sleep 03;
-printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
-exec ./run_script.sh
+exec ./scripts/r8168.sh
 
 #############################
 ## Apps extras
-#Nala (APT backend)
-elif [ $opt = "n" ];then
-printf ${boldorange}"* Instalando o Nala (apt backend) *${clear}\n"
-sleep 02;
-echo "deb [arch=amd64,arm64,armhf] http://deb.volian.org/volian/ scar main" | sudo tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list
-wget -qO - https://deb.volian.org/volian/scar.key | sudo tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg > /dev/null
-sudo apt update && sudo apt install nala
-printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
-exec ./run_script.sh
 
 #############################
 ## Tutoriais

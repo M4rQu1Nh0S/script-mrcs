@@ -38,8 +38,8 @@ sleep 01;
 printf ${orange}"Fazendo backup do arquivo 'default.pa' para 'default.pa.bak'${clear}\n"
 sudo cp /etc/pulse/default.pa /etc/pulse/default.pa.bak
 sleep 03;
-printf ${orange}"Copiando 'filtro-microfone.pa' para o destino /etc/pulse/default.pa${clear}\n"
-sudo cp ./filtro-microfone.pa /etc/pulse/default.pa
+printf ${orange}"Aplicando o patch${clear}\n"
+sudo patch -p1 /etc/pulse/default.pa < ./pulse.patch
 echo "Reiniciando o pulse audio" && sleep 01;
 pulseaudio -k
 sleep 03;
@@ -51,11 +51,11 @@ exec ./scripts/noise_mic.sh
 elif [ $opt = "2" ];then
 printf ${orange}"** Aplicando o filtro de ruído (PipeWire-Pulse): **${clear}\n"
 sleep 01;
-printf ${orange}"Fazendo backup do arquivo 'pipewire-pulse.conf' para 'pipewire-pulse.conf'${clear}\n"
+printf ${orange}"Fazendo backup do arquivo 'pipewire-pulse.conf' para 'pipewire-pulse.conf.bak'${clear}\n"
 sudo cp /usr/share/pipewire/pipewire-pulse.conf /usr/share/pipewire/pipewire-pulse.conf.bak
 sleep 03;
-printf ${orange}"Copiando 'filtro-microfone.pa' para o destino /etc/pulse/default.pa${clear}\n"
-sudo cp ./pipewire-pulse.conf /usr/share/pipewire/pipewire-pulse.conf
+printf ${orange}"Aplicando o patch${clear}\n"
+sudo patch -p1 /usr/share/pipewire/pipewire-pulse.conf < ./pipeware.patch
 echo "Reiniciando o PipeWire" && sleep 01;
 systemctl --user restart pipewire pipewire-pulse
 sleep 03;
@@ -74,6 +74,6 @@ else
 printf ${boldred}"\nOpção não encontrada, verifique o menu e selecione a opção correta${clear}\n"
 printf "\nDica: não use caixa alta\n"
 printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
-exec ./run_script.sh
+exec ./scripts/noise_mic.sh
 fi # final do script
 

@@ -1,1 +1,0 @@
-cmd_/home/marcos/r8168-8.050.03/src/r8168.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/marcos/r8168-8.050.03/src/r8168.ko /home/marcos/r8168-8.050.03/src/r8168.o /home/marcos/r8168-8.050.03/src/r8168.mod.o;  true

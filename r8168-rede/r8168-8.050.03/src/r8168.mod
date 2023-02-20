@@ -1,2 +1,0 @@
-/home/marcos/r8168-8.050.03/src/r8168_n.o /home/marcos/r8168-8.050.03/src/r8168_asf.o /home/marcos/r8168-8.050.03/src/rtl_eeprom.o /home/marcos/r8168-8.050.03/src/rtltool.o
-

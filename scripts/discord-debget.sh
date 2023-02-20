@@ -80,5 +80,5 @@ else
 printf ${boldred}"\nOpção não encontrada, verifique o menu e selecione a opção correta${clear}\n"
 printf "\nDica: não use caixa alta\n"
 printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
-exec ./run_script.sh
+exec ./scripts/discord-debget.sh
 fi # final do script 

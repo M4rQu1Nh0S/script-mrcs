@@ -1,0 +1,17 @@
+--- pipewire-pulse.conf	2022-10-07 11:38:13.000000000 -0300
++++ pipewire-pulse.conf.patch	2022-11-27 17:16:14.024832200 -0300
+@@ -1,4 +1,4 @@
+-# PulseAudio config file for PipeWire version "0.3.58" #
++# PulseAudio config file for PipeWire version "0.3.60" #
+ #
+ # Copy and edit this file in /etc/pipewire for system-wide changes
+ # or in ~/.config/pipewire for local changes.
+@@ -49,7 +49,7 @@
+ # Extra modules can be loaded here. Setup in default.pa can be moved here
+ context.exec = [
+     { path = "pactl"        args = "load-module module-always-sink" }
+-    #{ path = "pactl"        args = "load-module module-switch-on-connect" }
++    { path = "pactl"        args = "load-module module-echo-cancel aec_args="analog_gain_control=0 digital_gain_control=0"" }
+     #{ path = "/usr/bin/sh"  args = "~/.config/pipewire/default.pw" }
+ ]
+ 
