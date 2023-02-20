@@ -1,0 +1,1 @@
+cmd_/home/marcos/r8168-8.051.02-teste/src/r8168.mod := printf '%s\n'   r8168_n.o r8168_asf.o rtl_eeprom.o rtltool.o | awk '!x[$$0]++ { print("/home/marcos/r8168-8.051.02-teste/src/"$$0) }' > /home/marcos/r8168-8.051.02-teste/src/r8168.mod

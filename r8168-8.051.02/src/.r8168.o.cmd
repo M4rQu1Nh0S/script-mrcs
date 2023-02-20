@@ -1,0 +1,1 @@
+cmd_/home/marcos/r8168-8.051.02-teste/src/r8168.o := ld -m elf_x86_64 -z noexecstack --no-warn-rwx-segments   -r -o /home/marcos/r8168-8.051.02-teste/src/r8168.o @/home/marcos/r8168-8.051.02-teste/src/r8168.mod 
