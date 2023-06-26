@@ -46,7 +46,7 @@ printf ${orange}"** Instalando o driver **${clear}\n"
 cp -r r8168-8.051.02 ~/
 sudo ~/r8168-8.051.02/autorun.sh
 sudo ~/r8168-8.051.02/dkms_script.sh
-sudo bash -c "printf 'blacklist r8169' > /etc/modprobe.d/blacklist-r8169"
+sudo bash -c "printf 'blacklist r8169' > /etc/modprobe.d/blacklist-r8169.conf"
 sleep 03;
 printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
 exec ./scripts/r8168.sh
