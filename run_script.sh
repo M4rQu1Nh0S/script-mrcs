@@ -26,10 +26,13 @@ printf "Digite ${boldorange}1${clear} - Para corrigir problema de relógio com o
 printf "Digite ${boldorange}2${clear} - Para limitar o CState da CPU até C2E\n"
 # Aplicar configurações extras
 printf ${boldblue}"\n- Aplicar correções e configurações${clear}\n"
+printf "Digite ${boldorange}A${clear} - Para alterar o DPI da tela em 96x96\n"
 printf "Digite ${boldorange}3${clear} - Para aplicar o filtro de ruído para o microfone\n"
 printf "Digite ${boldorange}4${clear} - Para aplicar fix microfone mutado pós reboot\n"
 printf "Digite ${boldorange}5${clear} - Para aplicar script de simbolos do teclado\n"
 printf "Digite ${boldorange}6${clear} - ${boldclear}Para instalar o driver r8168 para placa 'Realtek 8136'${clear}\n"
+printf "Digite ${boldorange}7${clear} - Para aumentar o limite do mapeamento de memória virtual (Yuzu)\n"
+printf "Digite ${boldorange}V${clear} - Para aplicar o vm.swappiness=10 para alterar o uso de Memória Swap\n"
 # Baixar pacotes
 printf ${boldblue}"\n- Pacotes e programas${clear}\n"
 #printf "Digite ${boldorange}J${clear} - Para baixar o pacote alsa-tools-gui nativo\n"
@@ -37,7 +40,7 @@ printf "Digite ${boldorange}F${clear} - Para instalar o Firefox em .DEB\n"
 printf "Digite ${boldorange}D${clear} - Para baixar o Discord\n"
 printf "Digite ${boldorange}H${clear} - Para baixar o Hamsket\n"
 printf "Digite ${boldorange}S${clear} - Para baixar o Steam\n"
-printf "Digite ${boldorange}7${clear} - Para baixar o Fightcade\n"
+printf "Digite ${boldorange}8${clear} - Para baixar o Fightcade\n"
 printf "Digite ${boldorange}G${clear} - Para baixar o GIMP em portugues\n"
 
 printf "Digite ${boldorange}M${clear} - Para ler as instruções e recomendações extras${clear}\n"
@@ -53,6 +56,26 @@ if [ $opt = "0" ];then
 printf ${boldblue}"\n- Instalando o DEB-GET *\n${clear}\n"
 sudo apt install curl
 curl -sL https://raw.githubusercontent.com/wimpysworld/deb-get/main/deb-get | sudo -E bash -s install deb-get
+sleep 01;
+printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
+exec ./run_script.sh
+
+#############################
+# Remover Snaps:
+elif [ $opt = "a" ];then
+printf ${boldorange}"\n- Alterando o DPI da tela *\n${clear}\n"
+sudo X :1 -configure
+sudo cp /root/xorg.conf.new /etc/X11/xorg.conf
+sleep 02;
+
+printf ${boldorange}"* Copie a linha abaixo:${clear}\n"
+printf ${orange}"\nOption   "DPI" "96 x 96"${clear}\n\n"
+printf ${boldorange}"\n\nCole essa linha na opção ''Section Device'' do arquivo${clear}\n"
+printf ${green}"*** Aperte ${red}'ENTER'${green} para abrir o NANO.${clear}\n" && read
+sudo nano /etc/X11/xorg.conf
+
+sleep 02;
+printf ${boldgreen}"** Reinicie o PC **${clear}\n"
 sleep 01;
 printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
 exec ./run_script.sh
@@ -138,7 +161,7 @@ exec ./scripts/steam.sh
 
 #############################
 # Fightcade:
-elif [ $opt = "7" ];then
+elif [ $opt = "8" ];then
 exec ./scripts/fightcade.sh
 
 # GIMP:
@@ -158,6 +181,7 @@ exec ./scripts/noise_mic.sh
 elif [ $opt = "4" ];then
 printf ${orange}"** Aplicando fix para MIC mudo após reboot: **${clear}\n"
 printf ${boldgreen}"* Criando o script em '/usr/bin/refresh_audio.sh' *${clear}\n"
+sudo apt install -y pulseaudio-utils
 sudo cp ./refresh_audio.sh /usr/bin/refresh_audio.sh
 sudo chmod a+x /usr/bin/refresh_audio.sh
 mkdir -p ~/.config/autostart/
@@ -183,6 +207,24 @@ exec ./run_script.sh
 # Ruído microfone:
 elif [ $opt = "6" ];then
 exec ./scripts/r8168.sh
+
+# Mapeamento memória virtual:
+elif [ $opt = "7" ];then
+sudo sysctl -w vm.max_map_count=524288
+printf ${boldgreen}"* Aplicando alterações em '/etc/sysctl.d/99-yuzu-maps.conf' *${clear}\n"
+echo 'vm.max_map_count=524288' | sudo tee /etc/sysctl.d/99-yuzu-maps.conf
+sleep 02;
+printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
+exec ./run_script.sh
+
+# Swap de memória ram:
+elif [ $opt = "v" ];then
+sudo sysctl vm.swappiness=10
+printf ${boldgreen}"* Aplicando alterações em '/etc/sysctl.conf' *${clear}\n"
+echo 'vm.swappiness=10' | sudo tee -a /etc/sysctl.conf
+sleep 02;
+printf ${boldgreen}"*** Aperte ${boldred}'ENTER'${boldgreen} para voltar ao menu.${clear}\n" && read
+exec ./run_script.sh
 
 #############################
 ## Apps extras
